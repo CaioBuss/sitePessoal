@@ -4,6 +4,10 @@ body {
     background: #f4f4f4;
     color: #333;
 }
+.dark{
+    background: #121212;
+    color: #eee;
+}
 header {
     background: #222;
     color : #fff;
@@ -17,8 +21,16 @@ section {
     background: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-h2 {
-    color: #222;
+.dark selection{
+    background: #1e1e1e;
+}
+button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
 }
 .job {
     margin-bottom: 20px;
