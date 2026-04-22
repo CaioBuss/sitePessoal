@@ -24,5 +24,5 @@ function revealOnScroll() {
         });
     });
 
-    elements.forEach(e1 => observer.observe(e1));
+    elements.forEach(e1 => observer.observe(el));
 }
