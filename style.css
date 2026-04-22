@@ -1,19 +1,29 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
     background: #f4f4f4;
     color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    transition: 0.3s;
 }
-.dark{
-    background: #121212;
-    color: #eee;
+
+button, a {
+    background: #3b82f6;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
 }
 header {
-    background: #222;
-    color : #fff;
     padding: 20px 0;
     text-align: center;
 }
+h1 {
+    font-size: 2.5em;
+}
+
 section {
     padding: 20px;
     max-width: 800px;
@@ -21,17 +31,58 @@ section {
     background: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-.dark selection{
-    background: #1e1e1e;
+.button {
+    margin-top: 15px;
 }
-button {
-    padding: 10px 20px;
-    background: #007BFF;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
+.card {
+    background: #1e293b;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin:20px auto;
+    max-width: 900px;
+    padding: 20px;
 }
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
 .job {
     margin-bottom: 20px;
+}
+.light {
+    background: #fff;
+    box-shadow: none;
+    color: #111; 
+}
+.light .card {
+    background: #f9f9f9;
+    box-shadow: none;
+    color: #111;
+}
+.project {
+    background: #334155;
+    border-radius: 10px;
+    padding: 15px;
+    transition: 0.3s;
+}
+.projects {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+}
+.project:hover {
+    background: #3b82f6;
+}
+.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.6s ease;
+}
+.skills span{
+    background : #3b82f6;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 12px;
 }
