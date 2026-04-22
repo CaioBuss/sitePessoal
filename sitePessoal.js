@@ -15,7 +15,8 @@ window.onload =() => {
     revealOnScroll();
 }
 function revealOnScroll() {
-    const elements = document.querySelectorAll(".reveal");
+    const elements = document.querySelectorAll(".fade-in");
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (CustomElementRegistry.isIntersecting) {
