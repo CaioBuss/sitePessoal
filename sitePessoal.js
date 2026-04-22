@@ -19,11 +19,11 @@ function revealOnScroll() {
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-            if (CustomElementRegistry.isIntersecting) {
+            if (entry.isIntersecting) {
                 entry.target.classList.add("show");
             }
         });
     });
 
-    elements.forEach(e1 => observer.observe(el));
+    elements.forEach((el) => observer.observe(el));
 }
