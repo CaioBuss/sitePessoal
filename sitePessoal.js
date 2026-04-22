@@ -8,7 +8,7 @@ function toggleDarkMode() {
 }
 window.onload =() => {
     const savedTheme = localStorage.getItem("theme");
-    if (theme === "light") {
+    if (savedTheme === "light") {
         document.body.classList.add("light");
     }
 
