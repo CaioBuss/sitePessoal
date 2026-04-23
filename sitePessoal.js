@@ -10,10 +10,10 @@ window.onload =() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "light") {
         document.body.classList.add("light");
-        startGame();
     }
 
     revealOnScroll();
+    startGame();
 }
 function revealOnScroll() {
     const elements = document.querySelectorAll(".fade-in");
