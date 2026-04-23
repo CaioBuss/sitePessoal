@@ -90,7 +90,7 @@ section {
 #game {
     display: grid;
     gap: 6px;
-    grid-template-columns: repeaat(8, 40px);
+    grid-template-columns: repeat(8, 40px);
     justify-content: center;
     margin: 20px 0;
 }
