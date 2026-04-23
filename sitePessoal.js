@@ -35,30 +35,36 @@ let firstClick = true;
 
 function startGame() {
     const game = document.getElementById("game");
-    const status = document.getElementById("status");
-    cells = document.querySelectorAll(".cell");
+
+    if (!game) {
+        console.error("Div #game não encontrada");
+        return;
+    }
 
     game.innerHTML = "";
-    status.textContent = "";
     board = [];
-    firstClick = true;
 
-    for (let i = 0; i < size; i++) {
+    for (let i = 0; i < size * size; i++) {
         board.push({
             bomb: false,
             revealed: false,
-            flagged: false,
+            flagged: false
         });
     }
+
     board.forEach((cell, i) => {
         const div = document.createElement("div");
-        div.classlist.add("cell");
 
-        div.onclick = () => handleClick(i,div);
+        // 🔒 garante que o elemento existe antes de usar
+        if (!div) return;
 
-        div.oncetextmenu = (e) => {
+        div.classList.add("cell");
+
+        div.onclick = () => handleClick(i, div);
+
+        div.oncontextmenu = (e) => {
             e.preventDefault();
-            toggleFlag(i,div);
+            toggleFlag(i, div);
         };
 
         game.appendChild(div);
