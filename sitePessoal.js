@@ -80,16 +80,19 @@ function placeBombs(excludeIndex) {
         }
     }
 }
-function handleClick(index, cell) {
-    if (board[index].flagged || board[index].flagged) return;
+function handleClick(index, element) {
+    if (board[index].revealed || board[index].flagged) return;
 
     if (firstClick) {
         placeBombs(index);
         firstClick = false;
     }
 
-    revealCell(index, cell);
-    checkWin();
+    revealCell(index);
+
+    if (!firstClick) {
+        checkWin();
+    }
 }
 function toggleFlag(index, element) {
     if (board[index].revealed) return;
@@ -144,11 +147,15 @@ function gameOver() {
 function checkWin() {
     const status = document.getElementById("status");
 
+    const bombsPlaced = board.some(cell => cell.bomb);
+    if (!bombsPlaced) return;
+
     const won = board.every(cell =>
         cell.bomb || cell.revealed
     );
+
     if (won) {
-        status.innerText = "Você Venceu!";
+        status.innerText = "🎉 Você venceu!";
     }
 }
 
