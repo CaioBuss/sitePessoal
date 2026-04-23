@@ -35,14 +35,13 @@ let firstClick = true;
 
 function startGame() {
     const game = document.getElementById("game");
-
-    if (!game) {
-        console.error("Div #game não encontrada");
-        return;
-    }
+    const status = document.getElementById("status");
 
     game.innerHTML = "";
+    if (status) status.innerText = "";
+
     board = [];
+    firstClick = true;
 
     for (let i = 0; i < size * size; i++) {
         board.push({
@@ -54,8 +53,6 @@ function startGame() {
 
     board.forEach((cell, i) => {
         const div = document.createElement("div");
-        if (!div) return;
-
         div.classList.add("cell");
 
         div.onclick = () => handleClick(i, div);
@@ -69,6 +66,8 @@ function startGame() {
     });
 }
 function placeBombs(excludeIndex) {
+    board.forEach(cell => cell.bomb = false);
+
     let bombsPlaced = 0;
 
     while (bombsPlaced < bombsCount) {
@@ -90,9 +89,7 @@ function handleClick(index, element) {
 
     revealCell(index);
 
-    if (!firstClick) {
-        checkWin();
-    }
+    checkWin();
 }
 function toggleFlag(index, element) {
     if (board[index].revealed) return;
@@ -147,8 +144,7 @@ function gameOver() {
 function checkWin() {
     const status = document.getElementById("status");
 
-    const bombsPlaced = board.some(cell => cell.bomb);
-    if (!bombsPlaced) return;
+    if (!board.some(cell => cell.bomb)) return;
 
     const won = board.every(cell =>
         cell.bomb || cell.revealed
@@ -158,7 +154,6 @@ function checkWin() {
         status.innerText = "🎉 Você venceu!";
     }
 }
-
 function countBombs(index) {
     return getNeighbors(index).filter(i => board[i].bomb).length;
 }
