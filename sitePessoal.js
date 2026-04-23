@@ -36,6 +36,7 @@ let firstClick = true;
 function startGame() {
     const game = document.getElementById("game");
     const status = document.getElementById("status");
+    cells = document.querySelectorAll(".cell");
 
     game.innerHTML = "";
     status.textContent = "";
@@ -99,7 +100,7 @@ function toggleFlag(index, cell) {
         }
 }
 function revealCell(index, cell) {
-    const cells = document.querySelectorAll(".cell");
+    let cells = [];
     const element = cells[index];
 
     if (board[index].revealed || board[index].flagged) return;
@@ -126,8 +127,10 @@ function gameOver() {
     const cells = document.querySelectorAll(".cell");
     board.forEach((cell, i) => {
         if (cell.bomb) {
-            cells[i].classList.add("bomb");
-            cells[i].innerText = "💣";
+            if (cells[i]) {
+                cells[i].classList.add("bomb");
+                cells[i].innerText = "💣";
+            }
         }
     });
 }
