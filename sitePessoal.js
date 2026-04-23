@@ -116,11 +116,11 @@ function revealCell(index, cell) {
     element.innerText = count > 0 ? count : "";
 
     if (count === 0) {
-        getNeighbors(index).forEach((revealCell);
+        getNeighbors(index).forEach(revealCell);
     }
 }
 function gameOver() {
-    const status = document.gerElementById("status");
+    const status = document.getElementById("status");
     status.textContent = "Game Over!";
 
     const cells = document.querySelectorAll(".cell");
