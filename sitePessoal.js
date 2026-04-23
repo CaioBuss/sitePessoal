@@ -54,8 +54,6 @@ function startGame() {
 
     board.forEach((cell, i) => {
         const div = document.createElement("div");
-
-        // 🔒 garante que o elemento existe antes de usar
         if (!div) return;
 
         div.classList.add("cell");
@@ -93,7 +91,7 @@ function handleClick(index, cell) {
     revealCell(index, cell);
     checkWin();
 }
-function toggleFlag(index, cell) {
+function toggleFlag(index, element) {
     if (board[index].revealed) return;
     board[index].flagged = !board[index].flagged;
 
@@ -105,13 +103,16 @@ function toggleFlag(index, cell) {
         element.innerText = "";
         }
 }
-function revealCell(index, cell) {
-    let cells = [];
+function revealCell(index) {
+    const cells = document.querySelectorAll(".cell");
     const element = cells[index];
 
+    if (!element) return; // 👈 evita crash
     if (board[index].revealed || board[index].flagged) return;
+
     board[index].revealed = true;
     element.classList.add("revealed");
+
     if (board[index].bomb) {
         element.classList.add("bomb");
         element.innerText = "💣";
